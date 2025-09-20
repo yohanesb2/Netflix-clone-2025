@@ -12,11 +12,11 @@ const Row = ({title,fetchUrl,isLargeRow}) => {
   useEffect(()=>{
     (async ()=>{
       try{
-        console.log("fetchUrl:", fetchUrl);
+        // console.log("fetchUrl:", fetchUrl);
         const request = await axios.get(fetchUrl);
-        console.log( "fetched movies:", request)
-         console.log("response data:", request.data);
-         console.log("results", request.data.results);
+        // console.log( "fetched movies:", request)
+        //  console.log("response data:", request.data);
+        //  console.log("results", request.data.results);
         setMovie(request.data.results);
       } catch (error){
         console.log("error", error);
@@ -29,8 +29,9 @@ const handleClick =(movie) =>{
   } else{
     movieTrailer(movie?.title || movie?.name || movie?.original_name)
     .then((url)=>{
-      console.log(url);
-      const urlparams = new URLSearchParams(new URL(url).search)
+      // console.log(url);
+      // to get video id
+      const urlparams = new URLSearchParams(new URL(url).search) 
       console.log(urlparams);
       console.log(urlparams.get('v'));
       setTrailerUrl(urlparams.get('v'));
